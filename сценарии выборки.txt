@@ -1,0 +1,13 @@
+pod.errors
+pod.guide
+
+1) Совпадает марка только на английском и известна модель
+errors.model ilike guide.code_brand 
+and errors.model not ilike guide.name_brand
+and errors.normal ilike guide.name_model
+
+2) Совпадает марка на русском и известна модель
+and errors.model ilike guide.name_brand
+and errors.normal ilike guide.name_model
+
+3) Не указана марка, но есть модель

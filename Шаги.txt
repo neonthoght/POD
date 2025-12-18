@@ -1,0 +1,8 @@
+1) Создал таблицу pod.errors и pod.guide 
+
+2) Нашел примерное соответствие между моделью из pod.errors и маркой из guide
+copy (
+postgres(# select e.model, g.name_brand, count(*) from pod.errors e
+join pod.guide g on e.model ilike '%' || g.name_brand || '%'
+group by 1,2
+order by e.model) to '/tmp/model-name_brand.csv' delimiter ';' csv header;
