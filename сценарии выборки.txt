@@ -10,12 +10,12 @@ join pod.guide g on
 	and e.normal not ilike '%' || g.name_brand || '%'
 	and e.normal ilike '%' || g.name_model || '%';
 
+
 -- 2) Совпадает марка на русском и известна модель
 select e.model, g.name_brand, g.code_brand, g.code_model, g.name_model
 from pod.errors e
 join pod.guide g on 
-	e.normal ilike '%' || g.name_model || '%' 
-	and e.normal ilike '%' || g.name_brand || '%'
-	and e.model ilike '%' || g.code_brand || '%';
+	and e.normal not ilike '%' || g.name_brand || '%'
+	and e.normal ilike '%' || g.name_model || '%';
 
 3) Не указана марка, но есть модель
